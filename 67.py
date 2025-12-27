@@ -22,6 +22,8 @@ def run_test(questions):
         if answer.lower() == question.answer:
             Score += 1
             print("\nCorrect! " + str(Score) + " out of 4\n")
+        else:
+            print("\nWrong! The correct answer was (" + question.answer + "). " + str(Score) + " out of 4\n")
     print("You got " + str(Score) + " out of " + str(len(questions)) + "!")
 
 run_test(Prompt)
