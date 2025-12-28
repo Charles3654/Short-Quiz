@@ -17,13 +17,25 @@ Prompt = [
 
 def run_test(questions):
     Score = 0
+    current_question = 0
     for question in questions:
-        answer = input(question.question + "\n")
-        if answer.lower() == question.answer:
+         while True:
+            answer = input(question.question + "\n").lower().strip()
+            if answer not in ['a', 'b', 'c', 'd']:
+                print("Input not valid. Please enter a, b, c, or d. ")
+            else: 
+                break
+
+         if answer.lower() == question.answer:   
             Score += 1
-            print("\nCorrect! " + str(Score) + " out of 4\n")
-        else:
-            print("\nWrong! The correct answer was (" + question.answer + "). " + str(Score) + " out of 4\n")
-    print("You got " + str(Score) + " out of " + str(len(questions)) + "!")
+            current_question += 1
+            print("\nCorrect! " + str(Score) + " out of " + str(current_question))
+         else:
+             current_question += 1
+             print("\nWrong! The correct answer was (" + question.answer + "). " + str(Score) + " out of " + str(current_question) + "\n")
+
+    percentage = (Score / len(questions)) * 100
+
+    print("You got " + str(Score) + " out of " + str(len(questions)) + "! " + str(percentage) + "%")
 
 run_test(Prompt)
